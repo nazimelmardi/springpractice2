@@ -1,0 +1,20 @@
+type: object
+properties:
+  nameOfPublisher:
+    type: string
+    description: Name of the publisher
+    example: Tor
+  numberOfBooksOfPublisher:
+    type: integer
+    format: int64
+    description: Number of books of the publisher
+    example: 12
+  nameOfAuthor:
+    type: string
+    description: Name of the author
+    example: John Smith
+  numberOfBooksOfAuthor:
+    type: integer
+    format: int64
+    description: Number of books of the publisher
+    example: 12

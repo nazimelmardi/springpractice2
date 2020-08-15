@@ -43,6 +43,56 @@ paths:
           $ref: '#/components/responses/InternalServerError'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
+  /library-stats/booknumbers:
+    get:
+      tags:
+        - librarystats
+      summary: Send back the number of books by author and publisher
+      description: Send back the number of books by author and publisher
+      operationId: getBooksByAuthorAndPublisher
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorPublisherRequest'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BooksOfPublisherAndAuthor'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  /library-stats/bookbyage:
+    get:
+      tags:
+        - librarystats
+      summary: Send back the youngest and oldest book
+      description: Send back the youngest and oldest book
+      operationId: getYoungestOldestBook
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/YoungestOldestBook'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavaila'
 
 components:
   securitySchemes:
@@ -65,3 +115,9 @@ components:
   schemas:
     StatInfoForPort:
       $ref: './schemas/new-book-info.yaml'
+    YoungestOldestBook:
+      $ref: './schemas/youngest-oldest-book.yaml'
+    BooksOfPublisherAndAuthor:
+      $ref: './schemas/author-publisher-books.yaml'
+    AuthorPublisherRequest:
+      $ref: './schemas/author-publisher-request.yaml'

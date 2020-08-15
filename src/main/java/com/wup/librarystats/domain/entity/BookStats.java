@@ -3,7 +3,6 @@ package com.wup.librarystats.domain.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -29,5 +28,8 @@ public class BookStats {
 
     @Column(name = "date_of_publication")
     private LocalDate dateOfPublication;
+
+    @Column(name = "publisher_name")
+    private String publisherName;
 
 }

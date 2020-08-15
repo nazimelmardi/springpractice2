@@ -1,0 +1,20 @@
+type: object
+properties:
+  youngestBookTitle:
+    type: string
+    description: Youngest book in Library
+    example: Lord of the Rings
+  youngestBookPublicationDate:
+    type: string
+    format: date
+    description: Publication date of the youngest book
+    example: 2020-02-11
+  oldestBookTitle:
+    type: string
+    description: Oldest book in Library
+    example: Lord of the Rings
+  oldestBookPublicationDate:
+    type: string
+    format: date
+    description: Publication date of the oldest book
+    example: 2020-02-11

@@ -1,0 +1,10 @@
+type: object
+properties:
+  authorName:
+    type: string
+    description: Name of the Author
+    example: John Smith
+  publisherName:
+    type: string
+    description: Name of the Publisher
+    example: Tor
