@@ -1,0 +1,134 @@
+openapi: "3.0.0"
+
+info:
+  title: Library
+  description: Controller definition for the Library app
+  contact:
+    email: nazim.elmardi@gmail.com
+  version: 1.0.2
+servers:
+  - url: http://localhost:8080/
+tags:
+  - name: library
+    description: Operations for the library modul
+security:
+  - basicAuth: []
+
+paths:
+  /library/books:
+    post:
+      tags:
+        - library
+      summary: Adds a new book to the Library
+      description: Creates a new book
+      operationId: addNewBook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewBook'
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewBookResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+    get:
+      tags:
+        - library
+      summary: Send back the books filtered by params
+      description: Send back the books filtered by params
+      operationId: getBooksByParams
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookRequest'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewBookResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavaila'
+
+  /library/authors:
+    post:
+      tags:
+        - library
+      summary: Adds a new author to the Library
+      description: Creates a new author
+      operationId: addNewAuthor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewAuthor'
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewAuthorResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  responses:
+    BadRequest:
+      $ref: './schemas/errors/bad-request.yaml'
+    Forbidden:
+      $ref: './schemas/errors/forbidden.yaml'
+    Unauthorized:
+      $ref: './schemas/errors/unauthorized.yaml'
+    NotFound:
+      $ref: './schemas/errors/not-found.yaml'
+    InternalServerError:
+      $ref: './schemas/errors/internal-server-error.yaml'
+    ServiceUnavailable:
+      $ref: './schemas/errors/service-unavailable.yaml'
+  schemas:
+    NewBook:
+      $ref: './schemas/new-book.yaml'
+    NewBookResponse:
+      $ref: './schemas/new-book-response.yaml'
+    NewAuthor:
+      $ref: './schemas/new-author.yaml'
+    NewAuthorResponse:
+      $ref: './schemas/new-author-response.yaml'
+    AthorStat:
+      $ref: './schemas/new-author-stat-model.yaml'
+    BookRequest:
+      $ref: './schemas/book-request.yaml'

@@ -1,0 +1,6 @@
+type: object
+properties:
+  authorName:
+    type: string
+    description: name of the author
+    examle: John Smith

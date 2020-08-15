@@ -1,0 +1,28 @@
+type: object
+properties:
+  title:
+    type: string
+    description: Title of the book
+    example: Lord of the Rings
+  description:
+    type: string
+    description: Description of the book
+    example: Description of the story
+  yearOfPublication:
+    type: string
+    format: date
+    description: Date of publication of the book
+    example: 2020-02-11
+  yearAddedToLibrary:
+    type: string
+    format: date
+    description: Date of publication of the book
+    example: 2020-02-11
+  authorName:
+    type: string
+    description: Author name
+    example: John Smith
+  publisherName:
+    type: string
+    description: Publisher name
+    example: Tor

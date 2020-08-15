@@ -1,0 +1,20 @@
+name:
+  type: string
+  description: Name of the author
+  example: John Smith
+numberOfBooksInLibrary:
+  type: integer
+  description: Number of book in the library from the author
+  example: 12
+numberOfBookInYear:
+  type: integer
+  description: Number of books from author in the given year
+  example: 5
+avarageTimeToPutIntoLibrary:
+  type: integer
+  description: Number of days in avarage to put into library from publishing
+  example: 100
+numberOfThirdBook:
+  type: integer
+  description: Number of the third book of the author
+  example: 5

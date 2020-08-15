@@ -1,0 +1,29 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Author ID
+    example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+  title:
+    type: string
+    description: Title of the book
+    example: Lord of the Rings
+  description:
+    type: string
+    description: Description of the book
+    example: Description of the story
+  yearOfPublication:
+    type: string
+    format: date
+    description: Date of publication of the book
+    example: 2020-02-11
+  addedToLibrary:
+    type: string
+    format: date
+    description: Date added to the library
+    example: 2020-02-11
+  authorName:
+    type: string
+    description: Name of the author
+    example: John Smith
