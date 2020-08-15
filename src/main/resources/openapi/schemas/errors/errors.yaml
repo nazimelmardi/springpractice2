@@ -1,0 +1,8 @@
+type: object
+properties:
+  message:
+    type: string
+    example: error message
+  description:
+    type: string
+    example: Description about the story

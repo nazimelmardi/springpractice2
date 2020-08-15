@@ -1,0 +1,67 @@
+openapi: "3.0.0"
+
+info:
+  title: LibraryStats
+  description: Controller definition for the Library app
+  contact:
+    email: nazim.elmardi@gmail.com
+  version: 1.0.2
+servers:
+  - url: http://localhost:8081/
+tags:
+  - name: librarystats
+    description: Operations for the library statistics modul
+security:
+  - basicAuth: []
+
+paths:
+  /library-stats:
+    post:
+      tags:
+        - librarystats
+      summary: Adds new info to the stats
+      description: Add new info to the stats
+      operationId: addNewBookInfo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StatInfoForPort'
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatInfoForPort'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  responses:
+    BadRequest:
+      $ref: './schemas/errors/bad-request.yaml'
+    Forbidden:
+      $ref: './schemas/errors/forbidden.yaml'
+    Unauthorized:
+      $ref: './schemas/errors/unauthorized.yaml'
+    NotFound:
+      $ref: './schemas/errors/not-found.yaml'
+    InternalServerError:
+      $ref: './schemas/errors/internal-server-error.yaml'
+    ServiceUnavailable:
+      $ref: './schemas/errors/service-unavailable.yaml'
+  schemas:
+    StatInfoForPort:
+      $ref: './schemas/new-book-info.yaml'
