@@ -14,4 +14,6 @@ public class StatInfoForPort {
     private LocalDate dateOfPublication;
 
     private LocalDate addedToLibrary;
+
+    private String publisherName;
 }
