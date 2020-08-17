@@ -17,3 +17,7 @@ properties:
     type: string
     description: Name of the author
     example: John Smith
+  publisherName:
+    type: string
+    description: Name of the publisher
+    example: Tor

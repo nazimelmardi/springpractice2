@@ -2,6 +2,7 @@ package com.wup.libraryservice.service;
 
 import com.wup.libraryservice.domain.entity.Author;
 import com.wup.libraryservice.domain.entity.Book;
+import com.wup.libraryservice.domain.entity.Publisher;
 import com.wup.libraryservice.domain.persistence.AuthorRepository;
 import com.wup.libraryservice.domain.persistence.BookRepository;
 import com.wup.libraryservice.domain.persistence.RepoUtil;
@@ -21,8 +22,15 @@ public class BookService {
     private BookRepository bookRepository;
 
     @Transactional
-    public BookService addNewBook(Book book) {
+    public BookService addNewBook(Book book, String publisherName) {
         book.setAddedToLibrary(LocalDate.now());
+        Publisher publisher = author.findPublisherByName(publisherName);
+        if (publisher == null) {
+            publisher.setPublisherName(publisherName);
+            book.setPublisher(publisher);
+        } else {
+            book.setPublisher(publisher);
+        }
         author.addBook(book);
         authorRepository.save(author);
         return this;
@@ -33,10 +41,10 @@ public class BookService {
         return this;
     }
 
-    public BookService bookFilteredBy(BookRequest request) {
+    public List<Book> bookFilteredBy(BookRequest request) {
         RepoUtil repoUtil = new RepoUtil();
         List<Book> books = bookRepository.findAll((Pageable) repoUtil.createNewSpecification(request)).getContent();
-        return this;
+        return books;
     }
 
     public Author data() {

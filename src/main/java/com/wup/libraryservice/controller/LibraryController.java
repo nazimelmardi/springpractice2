@@ -24,11 +24,11 @@ public class LibraryController implements LibraryApi {
 
     @Override
     public ResponseEntity<NewBookResponse> addNewBook(@Valid NewBook newBook) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(libraryAdapter.createNewBook(newBook));
+        return ResponseEntity.status(HttpStatus.CREATED).body(libraryAdapter.callPort(newBook));
     }
 
     @Override
     public ResponseEntity<List<NewBookResponse>> getBooksByParams(@Valid BookRequest bookRequest) {
-        return null;
+        return ResponseEntity.ok(libraryAdapter.getBooksByParams(bookRequest));
     }
 }
